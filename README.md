@@ -199,3 +199,47 @@
       ]
     }
     ```
+
+== Set Up TSLint
+* `npm install tslint --save-dev`
+* add `tslint.json` to project root
+  * ```
+    {
+        "extends": "tslint:recommended",
+        "rules": {
+            "max-line-length": {
+                "options": [140]
+            },
+            "quotemark": [true, "single"],
+            "semicolon": [true, "never"],
+            "curly": [true, "ignore-same-line"],
+            "whitespace": [true, "check-decl", "check-operator", "check-typecast"],
+            "comment-format": false,
+            "ordered-imports": false,
+            "trailing-comma": false,
+            "arrow-parens": false,
+            "no-debugger": {
+              "severity": "warning"
+            },
+            "new-parens": true,
+            "no-arg": true,
+            "no-bitwise": true,
+            "no-conditional-assignment": true,
+            "no-consecutive-blank-lines": false,
+            "no-console": {
+                "options": [
+                    "debug",
+                    "info",
+                    "log",
+                    "time",
+                    "timeEnd",
+                    "trace"
+                ],
+                "severity": "warning"
+            }
+        }
+    }
+    ```
+* adapt `packag.json` script section
+  * `"lint": "tslint src/**/*.ts -c tslint.json"`
+* run `npm run lint` and fix the lint errors

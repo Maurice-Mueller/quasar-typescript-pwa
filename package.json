@@ -7,7 +7,7 @@
     "clean": "node build/script.clean.js",
     "dev": "node build/script.dev.js",
     "build": "node build/script.build.js",
-    "lint": "eslint --ext .js,.vue src"
+    "lint": "tslint src/**/*.ts -c tslint.json"
   },
   "dependencies": {
     "babel-runtime": "^6.25.0",
@@ -48,6 +48,7 @@
     "stylus-loader": "^3.0.1",
     "sw-precache-webpack-plugin": "^0.11.4",
     "ts-loader": "^2.3.4",
+    "tslint": "^5.7.0",
     "typescript": "^2.4.2",
     "uglify-es": "^3.0.28",
     "url-loader": "^0.5.7",

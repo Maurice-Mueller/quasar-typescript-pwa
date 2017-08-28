@@ -1,0 +1,36 @@
+{
+  "extends": "tslint:recommended",
+  "rules": {
+      "max-line-length": {
+          "options": [140]
+      },
+      "quotemark": [true, "single"],
+      "semicolon": [true, "never"],
+      "curly": [true, "ignore-same-line"],
+      "whitespace": [true, "check-decl", "check-operator", "check-typecast"],
+      "comment-format": false,
+      "ordered-imports": false,
+      "trailing-comma": false,
+      "arrow-parens": false,
+      "no-debugger": {
+        "severity": "warning"
+      },
+      "new-parens": true,
+      "no-arg": true,
+      "no-bitwise": true,
+      "no-conditional-assignment": true,
+      "no-consecutive-blank-lines": false,
+      "object-literal-sort-keys": false,
+      "no-console": {
+          "options": [
+              "debug",
+              "info",
+              "log",
+              "time",
+              "timeEnd",
+              "trace"
+          ],
+          "severity": "warning"
+      }
+  }
+}

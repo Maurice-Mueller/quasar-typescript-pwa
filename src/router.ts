@@ -13,11 +13,10 @@ function load (component) {
   return () => import(`@/${component}.vue`)
 }
 */
-
-const routeOptions = <VueRouter.RouterOptions>{
-	routes: [
-		{ path: '/', component: Hello}
-	]
-}
+const routeOptions = {
+  routes: [
+    { path: '/', component: Hello}
+  ]
+} as VueRouter.RouterOptions
 
 export default new VueRouter(routeOptions)

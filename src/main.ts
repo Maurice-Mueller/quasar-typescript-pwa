@@ -17,7 +17,6 @@ if (__THEME === 'mat') {
 // import 'quasar-extras/animate'
 
 /* eslint-disable no-new */
-console.log(JSON.stringify(App))
 const vm = new Vue({
   el: '#q-app',
   router,
