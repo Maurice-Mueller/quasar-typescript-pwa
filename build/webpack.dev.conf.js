@@ -7,7 +7,8 @@ var
   cssUtils = require('./css-utils'),
   baseWebpackConfig = require('./webpack.base.conf'),
   HtmlWebpackPlugin = require('html-webpack-plugin'),
-  FriendlyErrorsPlugin = require('friendly-errors-webpack-plugin')
+  FriendlyErrorsPlugin = require('friendly-errors-webpack-plugin'),
+  commons = require('./commons')
 
 // add hot-reload related code to entry chunks
 Object.keys(baseWebpackConfig.entry).forEach(function (name) {

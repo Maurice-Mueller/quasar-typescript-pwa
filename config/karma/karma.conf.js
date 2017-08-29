@@ -1,18 +1,19 @@
 var testConfig = require('../../build/webpack.test.conf')
 
+console.log('testConf: ' + JSON.stringify(testConfig))
+
 module.exports = function(config) {
   config.set({
     basePath: '../..',
     browsers: ['ChromeHeadless'],
-    // exclude: ['node_modules'],
     // frameworks: ['mocha', 'chai', 'karma-typescript'],
     frameworks: ['mocha', 'chai'],
     // this is the entry file for all our tests.
     files: [
       // {pattern: 'src/test/**/*.ktest0.ts', watch: false},
       // {pattern: 'src/main/**/*.ts', watch: false},
-      //  {pattern: 'src/test/**/*.js', watch: false},
-      //  {pattern: 'src/main/vue-setup.d.ts', watch: false},
+      // {pattern: 'src/test/**/*.js', watch: false},
+      // {pattern: 'src/main/vue-setup.d.ts', watch: false},
       // {pattern: 'src/main/**/*.vue', watch: false},
       {pattern: './config/karma/index.js', watched: false}
     ],

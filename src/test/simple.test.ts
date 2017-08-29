@@ -1,7 +1,6 @@
 import { expect } from 'chai'
 // import { suite, test} from 'mocha-typescript'
 
-// import {ClassForTest} from '@/Vue-for-test.vue'
 import Hello from '../main/components/Hello.vue'
 //import Hello from '@/Hello.vue'
 

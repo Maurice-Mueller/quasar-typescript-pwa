@@ -1,9 +1,9 @@
 {
   "compileOnSave": false,
   "compilerOptions": {
-      "baseUrl": ".",
+      "baseUrl": "./src/",
       "paths": {
-        "@/*": ["./src/main/components/*"]
+        "@/*": ["./main/components/*"]
       },
       "allowSyntheticDefaultImports": true,
       "lib": [
@@ -25,7 +25,8 @@
       "experimentalDecorators": true
   },
   "exclude": [
-    "node_modules"
+    "node_modules",
+    "node_modules/**/*"
   ],
   "include": [
       "./src/main/**/*",

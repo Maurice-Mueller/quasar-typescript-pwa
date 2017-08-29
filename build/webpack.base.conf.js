@@ -9,35 +9,28 @@ var
   ProgressBarPlugin = require('progress-bar-webpack-plugin'),
   useCssSourceMap =
     (env.dev && config.dev.cssSourceMap) ||
-    (env.prod && config.build.productionSourceMap)
-
-function resolve (dir) {
-  return path.join(__dirname, '..', dir)
-}
+    (env.prod && config.build.productionSourceMap),
+  commons = require('./commons')
 
 module.exports = {
   entry: {
     app: './src/main/main.ts'
   },
   output: {
-    path: path.resolve(__dirname, '../dist'),
+    path: commons.resolve('dist'),
     publicPath: config[env.prod ? 'build' : 'dev'].publicPath,
     filename: 'js/[name].js',
     chunkFilename: 'js/[id].[chunkhash].js'
   },
   resolve: {
     extensions: ['.js', '.ts', '.vue', '.json'],
-    modules: [
-      resolve('src/main'),
-      resolve('node_modules')
-    ],
     alias: config.aliases
   },
   module: {
     rules: [
       {
         test: /\.ts$/,
-        include: [resolve('src/main')],
+        include: [commons.resolve('src/main')],
         loader: 'ts-loader',
         options: {
           appendTsSuffixTo: [/\.vue$/]
@@ -45,7 +38,7 @@ module.exports = {
       },
       {
         test: /\.vue$/,
-        include: [resolve('src/main')],
+        include: [commons.resolve('src/main')],
         loader: 'vue-loader',
         options: {
           esModule: true,
@@ -94,7 +87,7 @@ module.exports = {
     new webpack.LoaderOptionsPlugin({
       minimize: env.prod,
       options: {
-        context: path.resolve(__dirname, '../src/main'),
+        context: commons.resolve('src/main'),
         postcss: cssUtils.postcss
       }
     }),
