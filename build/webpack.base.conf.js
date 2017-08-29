@@ -17,7 +17,7 @@ function resolve (dir) {
 
 module.exports = {
   entry: {
-    app: './src/main.ts'
+    app: './src/main/main.ts'
   },
   output: {
     path: path.resolve(__dirname, '../dist'),
@@ -28,7 +28,7 @@ module.exports = {
   resolve: {
     extensions: ['.js', '.ts', '.vue', '.json'],
     modules: [
-      resolve('src'),
+      resolve('src/main'),
       resolve('node_modules')
     ],
     alias: config.aliases
@@ -37,7 +37,7 @@ module.exports = {
     rules: [
       {
         test: /\.ts$/,
-        include: [resolve('src')],
+        include: [resolve('src/main')],
         loader: 'ts-loader',
         options: {
           appendTsSuffixTo: [/\.vue$/]
@@ -45,6 +45,7 @@ module.exports = {
       },
       {
         test: /\.vue$/,
+        include: [resolve('src/main')],
         loader: 'vue-loader',
         options: {
           esModule: true,
@@ -93,7 +94,7 @@ module.exports = {
     new webpack.LoaderOptionsPlugin({
       minimize: env.prod,
       options: {
-        context: path.resolve(__dirname, '../src'),
+        context: path.resolve(__dirname, '../src/main'),
         postcss: cssUtils.postcss
       }
     }),

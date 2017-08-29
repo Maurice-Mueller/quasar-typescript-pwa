@@ -42,7 +42,7 @@ module.exports = merge(baseWebpackConfig, {
     }),
     new HtmlWebpackPlugin({
       filename: path.resolve(__dirname, '../dist/index.html'),
-      template: 'src/index.html',
+      template: 'src/main/index.html',
       inject: true,
       minify: {
         removeComments: true,
@@ -82,7 +82,7 @@ module.exports = merge(baseWebpackConfig, {
     // copy custom static assets
     new CopyWebpackPlugin([
       {
-        from: path.resolve(__dirname, '../src/statics'),
+        from: path.resolve(__dirname, '../src/main/statics'),
         to: 'statics',
         ignore: ['.*']
       }

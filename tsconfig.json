@@ -2,6 +2,9 @@
   "compileOnSave": false,
   "compilerOptions": {
       "baseUrl": ".",
+      "paths": {
+        "@/*": ["./src/main/components/*"]
+      },
       "allowSyntheticDefaultImports": true,
       "lib": [
           "dom",
@@ -25,6 +28,7 @@
     "node_modules"
   ],
   "include": [
-      "./src/**/*"
+      "./src/main/**/*",
+      "./src/test/**/*"
   ]
 }

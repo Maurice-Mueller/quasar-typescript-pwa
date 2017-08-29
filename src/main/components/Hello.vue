@@ -14,8 +14,18 @@
 import Vue from 'vue'
 import Component from 'vue-class-component'
 
-@Component({})
+@Component
 export default class Hello extends Vue {
+  private bias: number = 10
+
+  public sub(a: number, b: number): number {
+    return a - b
+  }
+
+  public sub_with_bias(a: number): number {
+    return a - this.bias
+  }
+
 }
 </script>
 

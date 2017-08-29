@@ -45,7 +45,7 @@
 
 === Add TypeScript
 
-* `npm install typescript ts-loader vue-class-component @types/webpack @types/webpack-merge @types/html-webpack-plugin @types/node @types/extract-text-webpack-plugin @types/express --save-dev`
+* `npm install typescript ts-loader vue-class-component @types/webpack @types/webpack-merge @types/html-webpack-plugin @types/node @types/extract-text-webpack-plugin @types/express karma-sourcemap-loader mocha-webpack --save-dev`
 * in `build/webpack.base.conf.js`
   * adapt entry point
     * `app: './src/main.ts'`
@@ -205,41 +205,49 @@
 * add `tslint.json` to project root
   * ```
     {
-        "extends": "tslint:recommended",
-        "rules": {
-            "max-line-length": {
-                "options": [140]
-            },
-            "quotemark": [true, "single"],
-            "semicolon": [true, "never"],
-            "curly": [true, "ignore-same-line"],
-            "whitespace": [true, "check-decl", "check-operator", "check-typecast"],
-            "comment-format": false,
-            "ordered-imports": false,
-            "trailing-comma": false,
-            "arrow-parens": false,
-            "no-debugger": {
+      "extends": "tslint:recommended",
+      "rules": {
+          "max-line-length": {
+              "options": [140]
+          },
+          "quotemark": [true, "single"],
+          "semicolon": [true, "never"],
+          "curly": [true, "ignore-same-line"],
+          "whitespace": [true, "check-decl", "check-operator", "check-typecast"],
+          "comment-format": false,
+          "ordered-imports": false,
+          "trailing-comma": false,
+          "arrow-parens": false,
+          "no-debugger": {
+            "severity": "warning"
+          },
+          "new-parens": true,
+          "no-arg": true,
+          "no-bitwise": true,
+          "no-conditional-assignment": true,
+          "no-consecutive-blank-lines": false,
+          "object-literal-sort-keys": false,
+          "no-console": {
+              "options": [
+                  "debug",
+                  "info",
+                  "log",
+                  "time",
+                  "timeEnd",
+                  "trace"
+              ],
               "severity": "warning"
-            },
-            "new-parens": true,
-            "no-arg": true,
-            "no-bitwise": true,
-            "no-conditional-assignment": true,
-            "no-consecutive-blank-lines": false,
-            "no-console": {
-                "options": [
-                    "debug",
-                    "info",
-                    "log",
-                    "time",
-                    "timeEnd",
-                    "trace"
-                ],
-                "severity": "warning"
-            }
-        }
+          }
+      }
     }
     ```
 * adapt `packag.json` script section
   * `"lint": "tslint src/**/*.ts -c tslint.json"`
 * run `npm run lint` and fix the lint errors
+
+
+== Set Up Testing
+* `npm install mocha karma @types/mocha chai @types/chai jsdom @types/jsdom mocha-typescript karma-mocha karma-mocha-reporter karma-chrome-launcher karma-typescript karma-typescript-preprocessor karma-webpack karma-coverage karma-chai @types/karma @types/karma-chai --save-dev`
+* add `webpack.test.conf.js`
+  * ```
+    ```
