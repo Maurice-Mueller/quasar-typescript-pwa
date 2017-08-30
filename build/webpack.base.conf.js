@@ -29,6 +29,15 @@ module.exports = {
   module: {
     rules: [
       {
+        enforce: 'pre',
+        test: /\.ts$/,
+        loader: 'tslint-loader',
+        exclude: /(node_modules)/,
+        options: {
+            configFile: './tslint.json'
+        }
+      },
+      {
         test: /\.ts$/,
         include: [commons.resolve('src/main')],
         loader: 'ts-loader',
@@ -43,10 +52,13 @@ module.exports = {
         options: {
           esModule: true,
           postcss: cssUtils.postcss,
-          loaders:  cssUtils.styleLoaders({
+          loaders:  {
+            css: cssUtils.styleLoaders({
             sourceMap: useCssSourceMap,
             extract: env.prod
-          }),
+            }),
+            ts: 'ts-loader!tslint-loader'
+          },
           transformToRequire: {
             video: 'src',
             source: 'src',

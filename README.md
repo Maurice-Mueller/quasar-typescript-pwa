@@ -63,7 +63,7 @@
         options: {
           appendTsSuffixTo: [/\.vue$/]
         }
-      }    
+      }
       ```
   * adapt module.rules for `vue-loader`
     * ```
@@ -237,7 +237,13 @@
                   "trace"
               ],
               "severity": "warning"
-          }
+          },
+          "variable-name": [
+            true,
+            "ban-keywords",
+            "check-format",
+            "allow-leading-underscore"
+          ]
       }
     }
     ```
@@ -245,6 +251,45 @@
   * `"lint": "tslint src/**/*.ts -c tslint.json"`
 * run `npm run lint` and fix the lint errors
 
+* add tslint to webpack
+  * `npm install tslint-loader --save-dev`
+  * add to module.rules in `webpack.base.conf.js`
+    * ```
+      {
+        enforce: 'pre',
+        test: /\.ts$/,
+        loader: 'tslint-loader',
+        exclude: /(node_modules)/,
+        options: {
+            configFile: './tslint.json'
+        }
+      }
+      ```
+    * adapt vueloader (add ts-loader and tslint-loader for ts files)
+      * ```
+        {
+          test: /\.vue$/,
+          include: [commons.resolve('src/main')],
+          loader: 'vue-loader',
+          options: {
+            esModule: true,
+            postcss: cssUtils.postcss,
+            loaders:  {
+              css: cssUtils.styleLoaders({
+              sourceMap: useCssSourceMap,
+              extract: env.prod
+              }),
+              ts: 'ts-loader!tslint-loader'
+            },
+            transformToRequire: {
+              video: 'src',
+              source: 'src',
+              img: 'src',
+              image: 'xlink:href'
+            }
+          }
+        }
+        ```
 
 == Set Up Testing
 * `npm install mocha karma @types/mocha chai @types/chai jsdom @types/jsdom mocha-typescript karma-mocha karma-mocha-reporter karma-chrome-launcher karma-typescript karma-typescript-preprocessor karma-webpack karma-coverage karma-chai @types/karma @types/karma-chai --save-dev`
